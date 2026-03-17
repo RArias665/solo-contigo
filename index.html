@@ -3,276 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Historia🎵💗</title>
+    <title>Mi Pau</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500;700&display=swap');
+
         :root {
-            --retro-pink: #ff71ce;
-            --retro-blue: #01cdfe;
-            --retro-purple: #b967ff;
-            --tv-frame: #2a2a2a;
+            --primary-pink: #ffafbd;
+            --secondary-pink: #ffc3a0;
+            --glass: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.3);
         }
 
         body {
-            background-color: #0a0a0a;
-            color: white;
-            font-family: 'VT323', monospace;
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            background: radial-gradient(circle, #1a0b2e 0%, #050505 100%);
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffafbd 30%, #3d75db 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* TV Container - Mobile Responsive */
-        .tv-container {
-            position: relative;
-            width: 95vw;
-            max-width: 700px;
-            background: var(--tv-frame);
-            border-radius: 30px;
-            border: 8px solid #333;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px rgba(185, 103, 255, 0.2);
-            padding: 15px;
+        /* Partículas de fondo */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) scale(0); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        /* Tarjeta compacta sin vacíos */
+        .love-card {
+            width: 90%;
+            max-width: 360px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 35px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
-            background-image: linear-gradient(145deg, #333, #111);
-        }
-
-        /* Screen Area */
-        .screen {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 4/2.2,9;
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 5px solid #1a1a1a;
-            box-shadow: inset 0 0 30px rgba(0,0,0,1);
-        }
-
-        /* Sutil resplandor de pantalla */
-        .screen-glow {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            box-shadow: inset 0 0 40px rgba(255,255,255,0.05);
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        /* VHS Overlay Text */
-        .vhs-overlay {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            text-shadow: 1px 1px #ff00de, -1px -1px #00eaff;
+            padding: 24px;
             z-index: 10;
-            pointer-events: none;
-            letter-spacing: 2px;
+            /* Esta propiedad asegura que no se estire de más en móviles largos */
+            align-self: center;
         }
 
-        /* TV Bottom Controls */
-        .tv-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 10px 5px 10px;
-        }
-
-        .speaker-area {
-            display: flex;
-            gap: 4px;
-        }
-        .vent {
-            width: 4px;
-            height: 20px;
-            background: #111;
-            border-radius: 2px;
-        }
-
-        .led-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.8rem;
-            color: #ff4444;
-        }
-
-        .led {
-            width: 8px;
-            height: 8px;
-            background: #ff0000;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #ff0000;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .glitch-btn {
-            background: var(--retro-purple);
-            border: none;
-            padding: 15px 30px;
+        .romantic-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
             color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 4px 4px 0px var(--retro-blue);
-            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 16px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
         }
 
-        .glitch-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px var(--retro-blue);
+        /* Contenedor de Video */
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3.3;
+            border-radius: 20px; 
+            overflow: hidden;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
         video {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Para que no se corte el video original */
-            background: black;
+            object-fit: cover;
         }
 
-        .hidden { display: none; }
-        
+        /* Overlay de Corazón */
+        .heart-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 50px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
 
-        /* ===== IMÁGENES FLOTANTES ===== */
-.decor{
-  position:fixed;
-  width:170px;
-  opacity:.55;
-  pointer-events:none;
-  animation:floatY 10s ease-in-out infinite alternate;
-  filter:drop-shadow(0 0 20px rgba(255,120,200,.3));
-}
+        .is-paused .heart-overlay {
+            opacity: 0.8;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
 
-@keyframes floatY{
-  0%{ transform:translateY(0) rotate(0deg); }
-  100%{ transform:translateY(-30px) rotate(4deg); }
-}
+        /* Barra de Progreso */
+        .progress-area {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin: 20px 0;
+            cursor: pointer;
+            position: relative;
+        }
 
-/* VELOCIDADES */
-.slow{ animation-duration:6s; }
-.medium{ animation-duration:8s; }
-.fast{ animation-duration:10s; }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
+        }
 
-/* POSICIONES */
-.pos-top-left{ top:8%; left:4%; }
-.pos-middle-left{ top:75%; left:5%; }
-.pos-top-right{ top:8%; right:5%; }
-.pos-bottom-right{ bottom:10%; right:6%; }
+        /* Botones de Control */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
 
-      
+        .btn-love {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ff8a9a;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-love:active {
+            transform: scale(0.9);
+        }
+
+        .btn-main {
+            width: 65px;
+            height: 65px;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 24px;
+            color: white;
+            opacity: 0.8;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
 
-    <div id="start-screen" class="text-center p-6">
-        <h1 class="text-5xl md:text-7xl mb-10 text-pink-500 italic font-bold" style="text-shadow: 4px 4px #01cdfe;">PARA TI💗</h1>
-        <button onclick="startVideo()" class="glitch-btn">INSERTAR CINTA</button>
-        <p class="mt-6 text-gray-400 text-lg">VHS📼</p>
-    </div>
+    <div class="particles" id="particles-container"></div>
 
-    <div id="tv-player" class="tv-container hidden">
-        <div class="vhs-overlay">
-            ▶ PLAY<br>
-            <span id="vhs-time">00:00:00</span>
-        </div>
+    <div class="love-card" id="main-card">
+        <h2 class="romantic-title">My Love</h2>
         
-        <div class="screen">
-            <div class="screen-glow"></div>
-            <!-- Controles habilitados para que ella pueda pausar/adelantar -->
-            <video id="main-video" controls playsinline>
-                <source id="video-source" src="" type="video/mp4">
-                Tu celular no soporta este video.
+        <div class="video-wrapper" id="video-click-area">
+            <video id="player" loop playsinline>
+                <source src="videoga.mp4" type="video/mp4">
             </video>
+            <div class="heart-overlay">❤️</div>
         </div>
 
-        <div class="tv-footer">
-            <div class="speaker-area">
-                <div class="vent"></div>
-                <div class="vent"></div>
-                <div class="vent"></div>
-                <div class="vent"></div>
-                <div class="vent"></div>
+        <div class="progress-area" id="seek-bar-container">
+            <div class="progress-bar" id="seek-bar"></div>
+        </div>
+
+        <div class="controls-row">
+            <div class="btn-love" onclick="toggleMute()">
+                <svg id="vol-icon" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.02C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>
             </div>
             
-            <div class="flex items-center gap-4">
-                <div class="text-xs text-gray-500 uppercase tracking-widest">Hi-Fi Stereo</div>
-                <div class="led-indicator">
-                    <span class="led"></span>
-                    <span>REC</span>
-                </div>
+            <div class="btn-love btn-main" onclick="togglePlay()">
+                <svg id="play-btn-svg" width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"/></svg>
+            </div>
+
+            <div class="btn-love" onclick="shootHearts()">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z"/></svg>
             </div>
         </div>
-        <!-- DECORACIONES -->
-<img src="vhs.png" class="decor slow pos-top-left">
-<img src="vhsvi.png" class="decor fast pos-middle-left">
-<img src="vhscora.png" class="decor medium pos-top-right">
-<img src="estrella.png" class="decor slow pos-bottom-right">
 
+        <p class="footer-text">Para ti</p>
     </div>
 
     <script>
-        // CONFIGURACIÓN: Escribe aquí el nombre de tu archivo si no quieres que pregunte.
-        // Ejemplo: const NOMBRE_ARCHIVO_VIDEO = 'nuestra_historia.mp4';
-        const NOMBRE_ARCHIVO_VIDEO = 'videomelo.mp4'; 
+        const video = document.getElementById('player');
+        const playBtn = document.getElementById('play-btn-svg');
+        const seekBar = document.getElementById('seek-bar');
+        const videoArea = document.getElementById('video-click-area');
+        const card = document.getElementById('main-card');
 
-        function startVideo() {
-            const videoElement = document.getElementById('main-video');
-            const sourceElement = document.getElementById('video-source');
-            
-            let videoFile = NOMBRE_ARCHIVO_VIDEO;
-            
-            if (!videoFile) {
-                videoFile = prompt("Escribe el nombre de tu video (ejemplo: video.mp4):");
-            }
+        // Generar burbujas de fondo
+        const pContainer = document.getElementById('particles-container');
+        for (let i = 0; i < 15; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.width = p.style.height = (Math.random() * 6 + 2) + 'px';
+            p.style.animationDelay = (Math.random() * 10) + 's';
+            pContainer.appendChild(p);
+        }
 
-            if (videoFile) {
-                sourceElement.src = videoFile;
-                videoElement.load();
-                
-                document.getElementById('start-screen').classList.add('hidden');
-                document.getElementById('tv-player').classList.remove('hidden');
-                
-                // Intentar reproducción automática (puede fallar por políticas de navegador si no está muteado)
-                videoElement.play().catch(error => {
-                    console.log("Reproducción manual requerida.");
-                });
-
-                startTimeCounter();
+        function togglePlay() {
+            if (video.paused) {
+                video.play();
+                playBtn.innerHTML = '<path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>';
+                videoArea.classList.remove('is-paused');
+            } else {
+                video.pause();
+                playBtn.innerHTML = '<path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>';
+                videoArea.classList.add('is-paused');
             }
         }
 
-        function startTimeCounter() {
-            const timeElement = document.getElementById('vhs-time');
-            let seconds = 0;
-            
-            setInterval(() => {
-                const video = document.getElementById('main-video');
-                // Sincronizar el reloj del VHS con el tiempo real del video
-                if (!video.paused) {
-                    let currentTime = Math.floor(video.currentTime);
-                    let hrs = Math.floor(currentTime / 3600);
-                    let mins = Math.floor((currentTime % 3600) / 60);
-                    let secs = currentTime % 60;
-                    
-                    timeElement.innerText = 
-                        `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                }
-            }, 1000);
+        video.addEventListener('timeupdate', () => {
+            const progress = (video.currentTime / video.duration) * 100;
+            seekBar.style.width = progress + '%';
+        });
+
+        document.getElementById('seek-bar-container').addEventListener('click', (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / rect.width;
+            video.currentTime = pos * video.duration;
+        });
+
+        function toggleMute() {
+            video.muted = !video.muted;
+            document.getElementById('vol-icon').style.opacity = video.muted ? '0.5' : '1';
         }
-        
+
+        function shootHearts() {
+            for(let i=0; i<3; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.left = '50%';
+                heart.style.bottom = '20%';
+                heart.style.fontSize = '24px';
+                heart.style.transition = 'all 1s ease-out';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '100';
+                
+                card.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.style.transform = `translate(${(Math.random()-0.5)*200}px, -300px) scale(${Math.random()+1}) rotate(${Math.random()*360}deg)`;
+                    heart.style.opacity = '0';
+                }, 10);
+                
+                setTimeout(() => heart.remove(), 1000);
+            }
+        }
+
+        videoArea.addEventListener('click', togglePlay);
+
+        // Iniciar en pausa visualmente
+        videoArea.classList.add('is-paused');
     </script>
 </body>
 </html>
